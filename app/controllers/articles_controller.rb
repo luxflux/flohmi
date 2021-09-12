@@ -32,6 +32,7 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1
   def update
+    @message.images.attach(params[:images])
     if @article.update(article_params)
       redirect_to @article, notice: 'Article was successfully updated.'
     else
@@ -53,6 +54,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :description, :price)
+      params.require(:article).permit(:title, :description, :price, images: [])
     end
 end
