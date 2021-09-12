@@ -28,4 +28,6 @@
 
 <br>
 
-<%= link_to 'New Article', new_article_path %>
+<% if policy(Article).new? %>
+  <%= link_to 'New Article', new_article_path %>
+<% end %>

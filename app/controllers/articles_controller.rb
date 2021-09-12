@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = Article.all
+    @articles = policy_scope(Article)
+    authorize @articles
   end
 
   # GET /articles/1
@@ -13,15 +14,18 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+    authorize @article
   end
 
   # GET /articles/1/edit
   def edit
+    authorize @article
   end
 
   # POST /articles
   def create
     @article = Article.new(article_params)
+    authorize @article
 
     if @article.save
       redirect_to @article, notice: 'Article was successfully created.'
@@ -32,7 +36,10 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1
   def update
-    @message.images.attach(params[:images])
+    # @article.images.attach(params[:images])
+
+    authorize @article
+
     if @article.update(article_params)
       redirect_to @article, notice: 'Article was successfully updated.'
     else
