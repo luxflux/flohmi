@@ -2263,6 +2263,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bulma-carousel@npm:^4.0.24":
+  version: 4.0.24
+  resolution: "bulma-carousel@npm:4.0.24"
+  checksum: eb4e4124b5ccf4929fd176efa59e4a5fd9053a3ff83fb2e53c9e99ab260f8e9915f5a57901c6b029aeeb6d26279f1cc9a38f77b14e4ee01e4f88049e629ce490
+  languageName: node
+  linkType: hard
+
 "bulma@npm:^0.9.3":
   version: 0.9.3
   resolution: "bulma@npm:0.9.3"
@@ -3990,6 +3997,7 @@ __metadata:
     "@rails/ujs": ^6.0.0
     "@rails/webpacker": 5.4.2
     bulma: ^0.9.3
+    bulma-carousel: ^4.0.24
     turbolinks: ^5.2.0
     webpack: ^4.46.0
     webpack-cli: ^3.3.12

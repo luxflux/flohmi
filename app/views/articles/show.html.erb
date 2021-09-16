@@ -1,25 +1,30 @@
-<p id="notice"><%= notice %></p>
+<nav class="breadcrumb" aria-label="breadcrumbs">
+  <ul>
+    <li><%= link_to "Artikel", articles_path %></li>
+    <li class="is-active"><%= link_to @article.title, article_path(@article), 'aria-current' => 'page' %></li>
+  </ul>
+</nav>
+
+<div class="carousel">
+  <% @article.images.each do |image| %>
+    <%= image_tag image.representation(resize_to_limit: [700, 700]) %>
+  <% end %>
+</div>
 
 <p>
-  <strong>Title:</strong>
-  <%= @article.title %>
+<strong>Title:</strong>
+<%= @article.title %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @article.description %>
+<strong>Description:</strong>
+<%= @article.description %>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @article.price %>
+<strong>Price:</strong>
+<%= @article.price %>
 </p>
-
-<% @article.images.each do |image| %>
-  <li>
-    <%= image_tag image.representation(resize_to_limit: [100, 100]) %>
-  </li>
-<% end %>
 
 <% if policy(@article).edit? %>
   <%= link_to 'Edit', edit_article_path(@article) %> |

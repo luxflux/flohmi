@@ -11,7 +11,7 @@
 
   <body>
     <section class="section">
-      <div class="container">
+      <div class="container is-max-desktop">
         <h1 class="title">
           Flohmi
           <p id="notice"><%= notice %></p>
@@ -24,7 +24,9 @@
       </div>
     </section>
     <section class="section">
-      <%= yield %>
+      <div class="container is-max-desktop">
+        <%= yield %>
+      </div>
     </section>
   </body>
 </html>

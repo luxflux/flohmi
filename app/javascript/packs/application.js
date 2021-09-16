@@ -9,6 +9,8 @@ import * as ActiveStorage from "@rails/activestorage";
 
 import "../stylesheets/application";
 
+import "../carousel";
+
 Rails.start();
 Turbolinks.start();
 ActiveStorage.start();
