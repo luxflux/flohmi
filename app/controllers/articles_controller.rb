@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles/1
   def show
+    authorize @article
   end
 
   # GET /articles/new

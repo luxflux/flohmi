@@ -15,5 +15,13 @@
   <%= @article.price %>
 </p>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
+<% @article.images.each do |image| %>
+  <li>
+    <%= image_tag image.representation(resize_to_limit: [100, 100]) %>
+  </li>
+<% end %>
+
+<% if policy(@article).edit? %>
+  <%= link_to 'Edit', edit_article_path(@article) %> |
+<% end %>
 <%= link_to 'Back', articles_path %>
