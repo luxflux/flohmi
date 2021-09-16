@@ -2263,6 +2263,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bulma@npm:^0.9.3":
+  version: 0.9.3
+  resolution: "bulma@npm:0.9.3"
+  checksum: 98e1c2794b70c6339b41afc929bec6e22eae5b2751dc5fb0d9b7195d1c799ba4129a6fda1097e966db492f65fc4bed719da2498356c1ea6a9972f23ad3025d5c
+  languageName: node
+  linkType: hard
+
 "bytes@npm:3.0.0":
   version: 3.0.0
   resolution: "bytes@npm:3.0.0"
@@ -3982,6 +3989,7 @@ __metadata:
     "@rails/activestorage": ^6.0.0
     "@rails/ujs": ^6.0.0
     "@rails/webpacker": 5.4.2
+    bulma: ^0.9.3
     turbolinks: ^5.2.0
     webpack: ^4.46.0
     webpack-cli: ^3.3.12

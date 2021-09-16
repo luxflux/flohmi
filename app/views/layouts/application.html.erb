@@ -6,15 +6,25 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if logged_in? %>
-      <div>Hi <%= current_user.email %></div>
-    <% end %>
-
-    <%= yield %>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">
+          Flohmi
+          <p id="notice"><%= notice %></p>
+        </h1>
+        <% if logged_in? %>
+          <p class="subtitle">
+          <div>Hi <%= current_user.email %></div>
+          </p>
+        <% end %>
+      </div>
+    </section>
+    <section class="section">
+      <%= yield %>
+    </section>
   </body>
 </html>
