@@ -49,3 +49,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "bugsnag", "~> 6.22"
+
+gem "lograge", "~> 0.11.2"
