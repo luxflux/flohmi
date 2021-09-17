@@ -10,6 +10,7 @@ import * as ActiveStorage from "@rails/activestorage";
 import "../stylesheets/application";
 
 import "../components/gallery";
+import "../components/wysiwyg";
 
 Rails.start();
 Turbolinks.start();
