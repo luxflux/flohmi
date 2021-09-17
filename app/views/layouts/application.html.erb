@@ -10,23 +10,12 @@
   </head>
 
   <body>
-    <section class="section">
-      <div class="container is-max-desktop">
-        <h1 class="title">
-          Flohmi
-          <p id="notice"><%= notice %></p>
-        </h1>
-        <% if logged_in? %>
-          <p class="subtitle">
-          <div>Hi <%= current_user.email %></div>
-          </p>
-        <% end %>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container is-max-desktop">
-        <%= yield %>
-      </div>
-    </section>
+    <% if logged_in? %>
+      <p class="subtitle">
+      <div>Hi <%= current_user.email %></div>
+      </p>
+    <% end %>
+    <p id="notice"><%= notice %></p>
+    <%= yield %>
   </body>
 </html>
