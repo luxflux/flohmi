@@ -12,47 +12,84 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title, class: 'label' %>
+    <%= form.label :title, 'Titel', class: 'label' %>
     <div class="control">
       <%= form.text_field :title, class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <%= form.label :price, class: 'label' %>
+    <%= form.label :price, 'Preis', class: 'label' %>
     <div class="control">
       <%= form.text_field :price, class: 'input' %>
     </div>
   </div>
 
   <div class="field">
-    <%= form.label :description, class: 'label' %>
+    <%= form.label :description, 'Beschreibung', class: 'label' %>
     <div class="control">
       <div class="wysiwyg"></div>
       <%= form.hidden_field :description, class: 'wysiwyg-target' %>
     </div>
   </div>
 
-  <%= form.file_field :images, multiple: true, direct_upload: true %>
-  <div class="file has-name">
-    <label class="file-label">
-      <%= form.file_field :images, multiple: true, class: 'file-input' %>
-      <span class="file-cta">
-        <span class="file-icon">
-          <i class="fas fa-upload"></i>
-        </span>
-        <span class="file-label">
-          Choose a file...
-        </span>
-      </span>
-      <span class="file-name">
-        No file uploaded
-      </span>
-    </label>
+
+  <div class="field">
+    <div class="columns">
+      <div class="column is-full">
+        <div class="label">Bilder</div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <div class="column is-full">
+        <div class="file has-name">
+          <label class="file-label">
+            <%= form.file_field :images, multiple: true, class: 'file-input' %>
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choose a file...
+              </span>
+            </span>
+            <span class="file-name">
+              No file uploaded
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns">
+      <% @article.images.each do |image| %>
+        <div class="column" id="<%= dom_id(image) %>">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-3by2">
+                <%= image_tag image.representation(resize_to_limit: [700, 700]) %>
+              </figure>
+            </div>
+            <footer class="card-footer">
+              <%= link_to(
+                'Löschen',
+                active_storage_attachment_path(image),
+                method: :delete,
+                remote: :true,
+                class: 'card-footer-item',
+                data: { confirm: 'Bist du sicher?' },
+              )
+            %>
+            </footer>
+          </div>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'button is-primary' %>
   </div>
 <% end %>
 
@@ -61,7 +98,12 @@
   fileInput.onchange = () => {
     if (fileInput.files.length > 0) {
       const fileName = document.querySelector('.file .file-name');
-      fileName.textContent = fileInput.files[0].name;
+
+      if (fileInput.files.length === 1) {
+        fileName.textContent = fileInput.files[0].name;
+      } else {
+        fileName.textContent = 'Multiple';
+      }
     }
   }
 </script>

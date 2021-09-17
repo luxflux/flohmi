@@ -1,6 +1,7 @@
 import Quill from 'quill';
 
 import 'quill/dist/quill.snow.css';
+import './styles.scss';
 
 function loadEditor() {
   const editors = document.querySelectorAll('.wysiwyg');
@@ -24,7 +25,6 @@ function loadEditor() {
 
     form.onsubmit = () => {
       wysiwygTarget.value = quill.root.innerHTML;
-      debugger
     };
   });
 }

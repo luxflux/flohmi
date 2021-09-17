@@ -4,7 +4,7 @@
 
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
-        <li><%= link_to "Artikel", articles_path %></li>
+        <li><%= link_to 'Alle Artikel', articles_path %></li>
         <li class="is-active"><%= link_to @article.title, article_path(@article), 'aria-current' => 'page' %></li>
       </ul>
     </nav>
@@ -20,7 +20,7 @@
 
     <div class="columns">
       <div class="column is-four-fifths">
-        <div class="content"><%= santize @article.description %></div>
+        <div class="content"><%= sanitize @article.description %></div>
       </div>
       <div class="column">
         <div class="box">
@@ -31,14 +31,11 @@
       </div>
     </div>
 
-    <p>
-    <strong>Price:</strong>
-    <%= @article.price %>
-    </p>
-
     <% if policy(@article).edit? %>
-      <%= link_to 'Edit', edit_article_path(@article) %> |
+      <%= link_to 'Ändern', edit_article_path(@article) %>
     <% end %>
-    <%= link_to 'Back', articles_path %>
+    <% if policy(@article).destroy? %>
+      <%= link_to 'Löschen', article_path(@article), method: :delete, data: { confirm: 'Bist du sicher?' } %>
+    <% end %>
   </div>
 </section>

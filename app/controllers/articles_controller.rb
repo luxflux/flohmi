@@ -29,6 +29,8 @@ class ArticlesController < ApplicationController
     authorize @article
 
     if @article.save
+      @article.images.attach(params[:article][:images]) if params[:article][:images]
+
       redirect_to @article, notice: 'Article was successfully created.'
     else
       render :new
@@ -37,9 +39,9 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1
   def update
-    # @article.images.attach(params[:images])
-
     authorize @article
+
+    @article.images.attach(params[:article][:images]) if params[:article][:images]
 
     if @article.update(article_params)
       redirect_to @article, notice: 'Article was successfully updated.'
@@ -51,6 +53,8 @@ class ArticlesController < ApplicationController
   # DELETE /articles/1
   def destroy
     @article.destroy
+    authorize @article
+
     redirect_to articles_url, notice: 'Article was successfully destroyed.'
   end
 
@@ -62,6 +66,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :description, :price, images: [])
+      params.require(:article).permit(:title, :description, :price)
     end
 end

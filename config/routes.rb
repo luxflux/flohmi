@@ -4,5 +4,9 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
 
-  root "articles#index"
+  scope :active_storage, module: :active_storage, as: :active_storage do
+    resources :attachments, only: [:destroy]
+  end
+
+  root 'articles#index'
 end

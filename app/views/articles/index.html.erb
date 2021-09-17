@@ -31,6 +31,17 @@
           </div>
         </div>
       <% end %>
+      <% if policy(Article).new? %>
+        <div class="tile is-vertical is-parent">
+          <div class="tile is-child card">
+            <div class="card-content">
+              <div class="content">
+                <%= link_to 'Neuen Artikel hinzufügen', new_article_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </section>
