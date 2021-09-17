@@ -8,5 +8,5 @@ Rails.application.routes.draw do
     resources :attachments, only: [:destroy]
   end
 
-  root 'articles#index'
+  root to: redirect('/articles')
 end

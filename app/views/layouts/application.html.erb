@@ -10,11 +10,6 @@
   </head>
 
   <body>
-    <% if logged_in? %>
-      <p class="subtitle">
-      <div>Hi <%= current_user.email %></div>
-      </p>
-    <% end %>
     <p id="notice"><%= notice %></p>
     <%= yield %>
   </body>

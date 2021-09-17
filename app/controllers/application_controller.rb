@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :logged_in?
 
+  rescue_from 'Pundit::NotAuthorizedError' do
+    redirect_to root_path
+  end
+
   def current_user
     return unless session[:user_id]
 

@@ -1,7 +1,5 @@
 <section class="section">
   <div class="container is-max-desktop">
-    <h1 class="title"><%= @article.title %></h1>
-
     <nav class="breadcrumb" aria-label="breadcrumbs">
       <ul>
         <li><%= link_to 'Alle Artikel', articles_path %></li>
@@ -9,14 +7,20 @@
       </ul>
     </nav>
 
-    <div class="gallery block">
-      <div class="gallery__sidebar">
-        <% @article.images.each do |image| %>
-          <%= image_tag image.representation(resize_to_limit: [300, 250]), class: 'gallery__preview-image', data: { 'full-version' => url_for(image.representation(resize_to_limit: [2000,2000])) } %>
-        <% end %>
+    <h1 class="title"><%= @article.title %></h1>
+
+    <% if @article.images.length == 1 %>
+      <%= image_tag @article.images.first.representation(resize_to_limit: [2000,2000]) %>
+    <% else %>
+      <div class="gallery block">
+        <div class="gallery__sidebar">
+          <% @article.images.each do |image| %>
+            <%= image_tag image.representation(resize_to_limit: [300, 250]), class: 'gallery__preview-image', data: { 'full-version' => url_for(image.representation(resize_to_limit: [2000,2000])) } %>
+          <% end %>
+        </div>
+        <div class="gallery__zoomed-image"></div>
       </div>
-      <div class="gallery__zoomed-image"></div>
-    </div>
+    <% end %>
 
     <div class="columns">
       <div class="column is-four-fifths">

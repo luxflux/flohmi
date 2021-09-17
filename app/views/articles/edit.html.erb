@@ -1,5 +1,12 @@
 <section class="section">
   <div class="container is-max-desktop">
+    <nav class="breadcrumb" aria-label="breadcrumbs">
+      <ul>
+        <li><%= link_to 'Alle Artikel', articles_path %></li>
+        <li class="is-active"><%= link_to 'Artikel Editieren', edit_article_path(@article), 'aria-current' => 'page' %></li>
+      </ul>
+    </nav>
+
     <h1 class="title"><%= @article.title %> editieren</h1>
 
     <%= render 'form', article: @article %>
