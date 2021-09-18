@@ -99,6 +99,7 @@ GEM
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     jmespath (1.4.0)
+    json (2.5.1)
     launchy (2.5.0)
       addressable (~> 2.7)
     letter_opener (1.7.0)
@@ -131,6 +132,11 @@ GEM
       racc (~> 1.4)
     pg (1.2.3)
     phonelib (0.6.53)
+    postmark (1.22.0)
+      json
+    postmark-rails (0.21.0)
+      actionmailer (>= 3.0.0)
+      postmark (>= 1.21.3, < 2.0)
     public_suffix (4.0.6)
     puma (5.4.0)
       nio4r (~> 2.0)
@@ -242,6 +248,7 @@ DEPENDENCIES
   lograge (~> 0.11.2)
   pg
   phonelib (~> 0.6.53)
+  postmark-rails (~> 0.21.0)
   puma (~> 5.0)
   pundit
   rack-mini-profiler (~> 2.0)
