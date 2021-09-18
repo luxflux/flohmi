@@ -55,18 +55,5 @@
         <% end %>
       </div>
     <% end %>
-    <% if policy(Article).new? %>
-      <div class="columns">
-        <div class="column">
-          <div class="card">
-            <div class="card-content">
-              <div class="content">
-                <%= link_to 'Neuen Artikel hinzufügen', new_article_path %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
   </div>
 </section>

@@ -17,8 +17,15 @@
       <div class="container is-max-desktop">
         <nav class="navbar" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
-            <%= link_to 'Artikel', articles_path, class: 'navbar-item' %>
-            <%= link_to 'Anfragen', contact_requests_path, class: 'navbar-item' %>
+            <% if policy(Article).index? %>
+              <%= link_to 'Artikel', articles_path, class: 'navbar-item' %>
+            <% end %>
+            <% if policy(Article).new? %>
+              <%= link_to 'Neuen Artikel hinzufügen', new_article_path, class: 'navbar-item' %>
+            <% end %>
+            <% if policy(ContactRequest).index? %>
+              <%= link_to 'Anfragen', contact_requests_path, class: 'navbar-item' %>
+            <% end %>
           </div>
         </nav>
       </div>
