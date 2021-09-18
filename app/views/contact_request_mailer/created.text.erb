@@ -1,0 +1,14 @@
+Hallo
+
+Es ist eine neue Anfrage im Flohmi eingegangen.
+
+Artikel: <%= @contact_request.article.title %> (ID: <%= @contact_request.article_id %>)
+
+Name: <%= @contact_request.name %>
+Email: <%= @contact_request.email %>
+Telefon: <%= @contact_request.phone %>
+Betrag: <%= number_to_currency @contact_request.price, unit: 'CHF' %>
+
+Nachricht:
+
+<%= @contact_request.message %>

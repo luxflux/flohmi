@@ -11,6 +11,7 @@ class ContactRequestsController < ApplicationController
     authorize @contact_request
 
     if @contact_request.save
+      ContactRequestMailer.created(@contact_request).deliver_later
       redirect_to @article, notice: {
         title: 'Anfrage versandt',
         text: 'Vielen Dank für deine Anfrage! Wir werden uns demnächst bei Dir melden.',
