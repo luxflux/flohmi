@@ -1,0 +1,41 @@
+<section class="section">
+  <div class="container is-max-desktop">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Artikel</th>
+          <th>Preis</th>
+          <th>Email</th>
+          <th>Telefon</th>
+          <th>Nachricht</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contact_requests.each do |contact_request| %>
+          <tr>
+            <td><%= contact_request.name %></td>
+            <td><%= link_to contact_request.article.title, article_path(contact_request.article) %></td>
+            <td><%= number_to_currency contact_request.price, unit: 'CHF' %></td>
+            <td><%= link_to contact_request.email, "mailto:#{contact_request.email}" %></td>
+            <td><%= link_to contact_request.phone, "tel:#{contact_request.phone}" %></td>
+            <td>
+            <%= truncate contact_request.message, length: 15, omission: '...' do %>
+              <div class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-content">
+                  <div class="box">
+                    <%= contact_request.message %>
+                  </div>
+                </div>
+                <button class="modal-close is-large" aria-label="close"></button>
+              </div>
+              <button class="button is-text is-small modal-trigger">[Mehr]</button>
+            <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

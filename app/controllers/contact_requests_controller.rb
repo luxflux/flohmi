@@ -1,6 +1,14 @@
 class ContactRequestsController < ApplicationController
   before_action :set_article, only: [:new, :create]
 
+  def index
+    @contact_requests = policy_scope(ContactRequest).includes(:article)
+    authorize @contact_requests
+  end
+
+  def show
+  end
+
   def new
     @contact_request = @article.contact_requests.new
     authorize @contact_request
