@@ -31,9 +31,11 @@
                 <p class="is-size-3">
                   <%= article.title %>
                 </p>
-                <p class="is-size-4">
-                  <%= number_to_currency article.price, unit: 'CHF' %>
-                </p>
+                <% if article.price_range %>
+                  <p class="is-size-4">
+                    Um <%= number_to_currency article.price_range, unit: 'CHF' %>
+                  </p>
+                <% end %>
               </div>
               <footer class="card-footer">
                 <%= link_to 'Anzeigen', article, class: 'card-footer-item' %>

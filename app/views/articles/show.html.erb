@@ -29,7 +29,8 @@
       <div class="column">
         <div class="box">
           <h2 class="subtitle">
-            <%= number_to_currency @article.price, unit: 'CHF' %>
+            <%= number_to_currency @article.price_range, unit: 'CHF' %>
+            <span class="is-size-6">Verhandlungsbasis</span>
           </h2>
         </div>
       </div>
