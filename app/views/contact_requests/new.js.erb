@@ -1,0 +1,5 @@
+(() => {
+  const modalContainer = document.querySelector('#js-remote-modal');
+  modalContainer.innerHTML = "<%= j(render('new')) %>";
+  modalContainer.classList.add('is-active');
+})();

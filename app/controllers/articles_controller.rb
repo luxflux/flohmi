@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = policy_scope(Article)
+    @articles = policy_scope(Article).includes(:images_blobs, :contact_requests)
     authorize @articles
   end
 
@@ -31,7 +31,10 @@ class ArticlesController < ApplicationController
     if @article.save
       @article.images.attach(params[:article][:images]) if params[:article][:images]
 
-      redirect_to @article, notice: 'Article was successfully created.'
+      redirect_to @article, notice: {
+        title: 'Artikel erstellt',
+        text: 'Artikel wurde erfolgreich erstellt',
+      }
     else
       render :new
     end
@@ -44,7 +47,10 @@ class ArticlesController < ApplicationController
     @article.images.attach(params[:article][:images]) if params[:article][:images]
 
     if @article.update(article_params)
-      redirect_to @article, notice: 'Article was successfully updated.'
+      redirect_to @article, notice: {
+        title: 'Änderungen gespeichert',
+        text: 'Die Änderungen am Artikel wurden erfolgreich gespeichert',
+      }
     else
       render :edit
     end
@@ -55,7 +61,10 @@ class ArticlesController < ApplicationController
     @article.destroy
     authorize @article
 
-    redirect_to articles_url, notice: 'Article was successfully destroyed.'
+    redirect_to articles_url, notice: {
+      title: 'Artikel gelöscht',
+      text: 'Der Artikel wurde gelöscht',
+    }
   end
 
   private

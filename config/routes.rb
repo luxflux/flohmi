@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :articles
+  resources :articles do
+    resources :contact_requests, path: 'contact-requests', only: %i(new create)
+  end
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

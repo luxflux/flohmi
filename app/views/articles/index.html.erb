@@ -30,12 +30,19 @@
               <div class="card-content">
                 <p class="is-size-3">
                   <%= article.title %>
+                  <% if article.contact_requests.present? %>
+                    <span class="tag is-medium is-warning is-light">
+                      Hat bereits Interessenten
+                    </span>
+                  <% end %>
                 </p>
-                <% if article.price_range %>
-                  <p class="is-size-4">
+                <p class="is-size-4">
+                  <% if article.price_range %>
                     Um <%= number_to_currency article.price_range, unit: 'CHF' %>
-                  </p>
-                <% end %>
+                  <% else %>
+                    Keine Preisvorstellung
+                  <% end %>
+                </p>
               </div>
               <footer class="card-footer">
                 <%= link_to 'Anzeigen', article, class: 'card-footer-item' %>

@@ -11,6 +11,7 @@ import "../stylesheets/application";
 
 import "../components/gallery";
 import "../components/wysiwyg";
+import "../components/modal";
 
 Rails.start();
 Turbolinks.start();
