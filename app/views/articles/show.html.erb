@@ -23,15 +23,19 @@
     <% end %>
 
     <div class="columns">
-      <div class="column is-four-fifths">
+      <div class="column is-two-thirds">
         <div class="content"><%= sanitize @article.description %></div>
       </div>
       <div class="column">
         <div class="box">
-          <h2 class="subtitle">
-            <%= number_to_currency @article.price_range, unit: 'CHF' %>
-            <span class="is-size-6">Verhandlungsbasis</span>
-          </h2>
+          <% if @article.price_range %>
+            <div class="is-size-6 is-italic mb-1">Unsere Preisvorstellung</div>
+            <h2 class="subtitle">
+              <%= number_to_currency @article.price_range, unit: 'CHF' %>
+            </h2>
+          <% else %>
+            Wir haben keine Preisvorstellung
+          <% end %>
         </div>
       </div>
     </div>

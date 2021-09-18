@@ -3,5 +3,5 @@ class Article < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :price_range, numericality: true
+  validates :price_range, numericality: true, allow_blank: true
 end
