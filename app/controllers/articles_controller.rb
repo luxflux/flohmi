@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles
   def index
-    @articles = policy_scope(Article).includes(:images_blobs, :contact_requests)
+    @articles = policy_scope(Article).includes(:images_blobs, :contact_requests).order(id: :desc)
     authorize @articles
   end
 

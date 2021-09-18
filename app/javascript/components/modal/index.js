@@ -18,5 +18,5 @@ function initializeModals() {
   });
 }
 
-window.addEventListener('load', initializeModals);
+window.addEventListener('turbolinks:load', initializeModals);
 window.addEventListener('ajax:success', initializeModals);

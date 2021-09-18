@@ -2,7 +2,7 @@ class ContactRequestsController < ApplicationController
   before_action :set_article, only: [:new, :create]
 
   def index
-    @contact_requests = policy_scope(ContactRequest).includes(:article)
+    @contact_requests = policy_scope(ContactRequest).includes(:article).order(id: :desc)
     authorize @contact_requests
   end
 
