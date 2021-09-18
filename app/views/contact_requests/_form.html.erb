@@ -1,50 +1,9 @@
-<%= form_with(model: contact_request, url: article_contact_requests_path, local: false) do |form| %>
-  <% if contact_request.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(contact_request.errors.count, "error") %> prohibited this article from being saved:</h2>
-
-      <ul>
-        <% contact_request.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name, 'Dein Name', class: 'label' %>
-    <div class="control">
-      <%= form.text_field :name, class: 'input' %>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= form.label :email, 'Email', class: 'label' %>
-    <div class="control">
-      <%= form.email_field :email, class: 'input' %>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone, 'Telefon', class: 'label' %>
-    <div class="control">
-      <%= form.phone_field :phone, class: 'input' %>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= form.label :price, 'Betrag (CHF)', class: 'label' %>
-    <div class="control">
-      <%= form.text_field :price, class: 'input' %>
-    </div>
-  </div>
-
-  <div class="field">
-    <%= form.label :message, 'Deine Nachricht', class: 'label' %>
-    <div class="control">
-      <%= form.text_area :message, class: 'textarea' %>
-    </div>
-  </div>
+<%= simple_form_for(contact_request, url: article_contact_requests_path, remote: true) do |form| %>
+  <%= form.input :name, label: 'Dein Name' %>
+  <%= form.input :email, label: 'Email' %>
+  <%= form.input :phone, label: 'Telefon' %>
+  <%= form.input :price, label: 'Betrag (CHF)' %>
+  <%= form.input :message, label: 'Deine Nachricht' %>
 
   <div class="actions">
     <%= form.submit 'Anfrage absenden', class: 'button is-success' %>

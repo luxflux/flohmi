@@ -16,7 +16,11 @@ function initializeModals() {
       };
     }
   });
+
+  document.querySelectorAll('form[data-remote="true"]').forEach(form => {
+    form.addEventListener('ajax:complete', initializeModals);
+  });
 }
 
 window.addEventListener('turbolinks:load', initializeModals);
-window.addEventListener('ajax:success', initializeModals);
+window.addEventListener('ajax:complete', initializeModals);

@@ -54,3 +54,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "postmark-rails", "~> 0.21.0"
+
+gem "simple_form", "~> 5.1"

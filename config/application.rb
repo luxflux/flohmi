@@ -34,5 +34,7 @@ module Flohmi
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    I18n.available_locales = %i(en de-CH)
   end
 end

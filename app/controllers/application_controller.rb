@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :set_locale
+
   include Pundit
   after_action :verify_authorized, except: :index
   after_action :verify_policy_scoped, only: :index
@@ -8,6 +10,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from 'Pundit::NotAuthorizedError' do
     redirect_to root_path
+  end
+
+  def set_locale
+    I18n.locale = 'de-CH'
   end
 
   def current_user
