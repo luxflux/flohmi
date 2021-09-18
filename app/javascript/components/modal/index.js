@@ -2,16 +2,18 @@ function initializeModals() {
   const modals = document.querySelectorAll('.modal');
 
   modals.forEach(modal => {
-    const closeHandler = modal.querySelector('button.delete') || modal.querySelector('button.modal-close');
-    if (closeHandler) {
+    const closeHandlers = modal.querySelectorAll('button.delete, button.modal-close, button.form-cancel');
+    closeHandlers.forEach(closeHandler => {
       closeHandler.onclick = event => {
+        event.preventDefault();
         modal.classList.remove('is-active');
       };
-    }
+    });
 
     const opener = modal.parentNode.querySelector('.modal-trigger');
     if(opener) {
       opener.onclick = event => {
+        event.preventDefault();
         modal.classList.add('is-active');
       };
     }

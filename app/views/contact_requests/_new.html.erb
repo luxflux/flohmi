@@ -1,10 +1,25 @@
-<div class="modal-background"></div>
-<div class="modal-card">
-  <header class="modal-card-head">
-    <p class="modal-card-title">Interessiert an <%= @article.title %>?</p>
-    <button class="delete" aria-label="close"></button>
-  </header>
-  <section class="modal-card-body">
-    <%= render 'form', contact_request: @contact_request %>
-  </section>
-</div>
+<%= simple_form_for(@contact_request, url: article_contact_requests_path, remote: true) do |form| %>
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Interessiert an <%= @article.title %>?</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+
+      <section class="modal-card-body">
+        <%= form.input :name, label: 'Dein Name' %>
+        <%= form.input :email, label: 'Email' %>
+        <%= form.input :phone, label: 'Telefon' %>
+        <%= form.input :price, label: 'Betrag (CHF)' %>
+        <%= form.input :message, label: 'Deine Nachricht' %>
+      </section>
+
+      <footer class="modal-card-foot">
+        <%= form.submit 'Anfrage absenden', class: 'button is-success' %>
+        <button class="button form-cancel">Abbrechen</button>
+      </footer>
+    </div>
+  </div>
+<% end %>
