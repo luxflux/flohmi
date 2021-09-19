@@ -58,3 +58,7 @@ gem "postmark-rails", "~> 0.21.0"
 gem "simple_form", "~> 5.1"
 
 gem "gibbon", "~> 3.4"
+
+gem "rack-cache", "~> 1.12"
+
+gem "dalli", "~> 2.7"

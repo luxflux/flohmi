@@ -36,5 +36,24 @@ module Flohmi
     config.generators.system_tests = nil
 
     I18n.available_locales = %i(en de-CH)
+
+    config.action_dispatch.rack_cache = { verbose: true }
+    if ENV['MEMCACHEDCLOUD_SERVERS']
+      client = Dalli::Client.new(
+        ENV['MEMCACHEDCLOUD_SERVERS'].split(','),
+        username: ENV['MEMCACHEDCLOUD_USERNAME'],
+        password: ENV['MEMCACHEDCLOUD_PASSWORD'],
+        failover: true,
+      )
+      config.action_dispatch.rack_cache.merge!(
+        metastore: client,
+        entitystore: "file:./tmp/cache/rack-cache",
+      )
+    else
+      config.action_dispatch.rack_cache.merge!(
+        metastore: "file:./tmp/cache/rack-cache/meta",
+        entitystore: "file:./tmp/cache/rack-cache/body",
+      )
+    end
   end
 end
