@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :contact_requests, path: 'contact-requests', only: %i(new create)
   end
   resources :contact_requests, path: 'contact-requests', only: %i(index show)
+  resources :subscribers, path: 'subscribers', only: %i(create)
 
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'

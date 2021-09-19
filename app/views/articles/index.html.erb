@@ -12,6 +12,23 @@
       <p>Frohes Stöbern! Bei Fragen oder Unklarheiten einfach melden.</p>
       <p>Liebe Grüsse</p>
       <p>Familie Schmid</p>
+
+      <% unless session[:subscribed] %>
+        <div id="js-subscriber-form">
+          <p>PS: Wenn du über neue Artikel informiert werden möchtest, kannst du uns hier deine E-Mail Adresse hinterlassen.</p>
+          <%= form_for :subscriber, url: subscribers_path, remote: true do |form| %>
+            <div class="field has-addons">
+              <div class="control">
+                <%= form.email_field :email, required: true, placeholder: 'benutzer@example.org', class: 'input' %>
+              </div>
+              <div class="control">
+                <%= form.submit 'Infos Abonnieren', class: 'button is-info' %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </section>
