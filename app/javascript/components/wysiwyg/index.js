@@ -15,6 +15,7 @@ function loadEditor() {
           [{ header: [1, 2, false] }],
           ['bold', 'italic', 'underline'],
           [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+          ['link'],
         ]
       },
       placeholder: 'Schreibe einen tollen Text ...',

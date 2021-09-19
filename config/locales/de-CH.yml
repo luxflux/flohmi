@@ -18,7 +18,7 @@ de-CH:
     - Fr
     - Sa
     abbr_month_names:
-    - 
+    -
     - Jan
     - Feb
     - Mär
@@ -43,8 +43,9 @@ de-CH:
       default: "%d.%m.%Y"
       long: "%e. %B %Y"
       short: "%e. %b"
+      date: "%e"
     month_names:
-    - 
+    -
     - Januar
     - Februar
     - März

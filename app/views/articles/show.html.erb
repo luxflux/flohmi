@@ -11,43 +11,52 @@
 
     <%= render 'flash' %>
 
-    <% if @article.images.length == 1 %>
-      <%= image_tag @article.images.first.representation(resize_to_limit: [2000,2000]) %>
-    <% else %>
-      <div class="gallery block">
-        <div class="gallery__sidebar">
-          <% @article.images.each do |image| %>
-            <%= image_tag image.representation(resize_to_limit: [300, 250]), class: 'gallery__preview-image', data: { 'full-version' => url_for(image.representation(resize_to_limit: [2000,2000])) } %>
-          <% end %>
-        </div>
-        <div class="gallery__zoomed-image"></div>
-      </div>
-    <% end %>
-
     <div class="columns">
-      <div class="column is-two-thirds">
-        <div class="content"><%= sanitize @article.description %></div>
+      <div class="column is-8">
+        <% if @article.images.length == 1 %>
+          <%= image_tag @article.images.first.representation(resize_to_fit: [2000,2000]) %>
+        <% else %>
+          <div class="gallery block">
+            <div class="gallery__navigation">
+              <% @article.images.each do |image| %>
+                <%= image_tag image.representation(resize_to_limit: [300, 250]), class: 'gallery__preview-image', data: { 'full-version' => url_for(image.representation(resize_to_limit: [2000,2000])) } %>
+              <% end %>
+            </div>
+            <div class="gallery__zoomed-image"></div>
+          </div>
+        <% end %>
       </div>
-      <div class="column">
-        <div class="box">
-          <% if @article.price_range %>
-            <div class="is-size-6 is-italic mb-1">Unsere Preisvorstellung</div>
-            <h2 class="subtitle">
+
+      <div class="column is-4">
+        <div class="mb-6">
+          <h2 class="is-size-4">Beschreibung</h2>
+          <div class="content"><%= sanitize @article.description %></div>
+        </div>
+        <div class="block">
+          <h2 class="is-size-4">Interessiert?</h2>
+          <div class="mb-1">
+            <% if @article.price_range %>
+              <span class="is-italic">Unsere Preisvorstellung:</span>
               <%= number_to_currency @article.price_range, unit: 'CHF' %>
-            </h2>
-          <% else %>
-            Wir haben keine Preisvorstellung
-          <% end %>
+            <% else %>
+              <span class="is-italic">
+                Wir haben keine Preisvorstellung
+              </span>
+            <% end %>
+          </div>
           <%= link_to 'Anfragen', new_article_contact_request_path(@article), remote: true, class: 'button is-primary' %>
         </div>
+        <% if policy(@article).edit? || policy(@article).destroy? %>
+          <div class="block">
+            <% if policy(@article).edit? %>
+              <%= link_to 'Ändern', edit_article_path(@article), class: 'button is-link is-small' %>
+            <% end %>
+            <% if policy(@article).destroy? %>
+              <%= link_to 'Löschen', article_path(@article), class: 'button is-danger is-light is-small', method: :delete, data: { confirm: 'Bist du sicher?' } %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
     </div>
-
-    <% if policy(@article).edit? %>
-      <%= link_to 'Ändern', edit_article_path(@article) %>
-    <% end %>
-    <% if policy(@article).destroy? %>
-      <%= link_to 'Löschen', article_path(@article), method: :delete, data: { confirm: 'Bist du sicher?' } %>
-    <% end %>
   </div>
 </section>

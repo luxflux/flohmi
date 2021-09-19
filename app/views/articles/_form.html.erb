@@ -66,11 +66,13 @@
       <% @article.images.each do |image| %>
         <div class="column" id="<%= dom_id(image) %>">
           <div class="card">
-            <div class="card-image">
-              <figure class="image is-3by2">
-                <%= image_tag image.representation(resize_to_limit: [700, 700]) %>
-              </figure>
-            </div>
+            <% if image.representable? %>
+              <div class="card-image">
+                <figure class="image is-3by2">
+                  <%= image_tag image.representation(resize_to_limit: [700, 700]) %>
+                </figure>
+              </div>
+            <% end %>
             <footer class="card-footer">
               <%= link_to(
                 'Löschen',

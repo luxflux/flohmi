@@ -17,32 +17,35 @@
 </section>
 <section class="section">
   <div class="container is-max-desktop">
-    <% @articles.in_groups_of(4, false) do |articles| %>
+    <% @articles.in_groups_of(3, false) do |articles| %>
       <div class="columns">
         <% articles.each do |article| %>
           <div class="column">
             <div class="card">
               <div class="card-image">
-                <figure class="image is-3by2">
-                  <%= image_tag article.images.first.representation(resize_to_limit: [700, 700]) %>
+                <figure class="image is-350x350">
+                  <%= image_tag article.images.first.representation(resize_to_fill: [700, 700]) %>
                 </figure>
+                <div class="card-image-stamp">
+                  <% if article.contact_requests.present? %>
+                    <div class="tag is-medium is-info is-light">
+                      Hat Interessenten
+                    </div>
+                  <% end %>
+                </div>
               </div>
               <div class="card-content">
-                <p class="is-size-3">
+                <p class="is-size-5">
                   <%= article.title %>
-                  <% if article.contact_requests.present? %>
-                    <span class="tag is-medium is-warning is-light">
-                      Hat bereits Interessenten
-                    </span>
-                  <% end %>
                 </p>
-                <p class="is-size-4">
+                <p class="block is-size-6">
                   <% if article.price_range %>
                     Um <%= number_to_currency article.price_range, unit: 'CHF' %>
                   <% else %>
                     Keine Preisvorstellung
                   <% end %>
                 </p>
+                <p class="block is-size-6 is-italic has-text-grey-light">Am <%= l(article.created_at.to_date) %> hinzugefügt</p>
               </div>
               <footer class="card-footer">
                 <%= link_to 'Anzeigen', article, class: 'card-footer-item' %>

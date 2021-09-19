@@ -1,6 +1,6 @@
 class Article < ApplicationRecord
   has_many_attached :images
-  has_many :contact_requests
+  has_many :contact_requests, dependent: :destroy
 
   validates :title, presence: true
   validates :description, presence: true
