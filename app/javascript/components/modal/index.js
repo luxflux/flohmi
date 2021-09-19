@@ -2,7 +2,7 @@ function initializeModals() {
   const modals = document.querySelectorAll('.modal');
 
   modals.forEach(modal => {
-    const closeHandlers = modal.querySelectorAll('button.delete, button.modal-close, button.form-cancel');
+    const closeHandlers = modal.querySelectorAll('a.delete, button.modal-close, button.form-cancel');
     closeHandlers.forEach(closeHandler => {
       closeHandler.onclick = event => {
         event.preventDefault();
