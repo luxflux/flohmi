@@ -8,6 +8,8 @@
 
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= auto_discovery_link_tag :rss, articles_url(format: :rss) %>
   </head>
 
   <body>

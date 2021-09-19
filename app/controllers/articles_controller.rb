@@ -6,6 +6,13 @@ class ArticlesController < ApplicationController
     @articles = policy_scope(Article).includes(:images_blobs, :contact_requests).order(id: :desc)
     @articles = @articles.where(category_id: params[:category_id]) if params[:category_id]
     authorize @articles
+
+    respond_to do |format|
+      format.html
+      format.rss do
+        render layout: false
+      end
+    end
   end
 
   # GET /articles/1
