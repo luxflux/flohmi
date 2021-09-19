@@ -19,6 +19,15 @@
   </div>
 
   <div class="field">
+    <%= form.label :category, 'Kategorie', class: 'label' %>
+    <div class="control">
+      <div class="select">
+        <%= form.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @article.category_id) %>
+      </div>
+    </div>
+  </div>
+
+  <div class="field">
     <%= form.label :price_range, 'Preisrahmen', class: 'label' %>
     <div class="control">
       <%= form.text_field :price_range, class: 'input' %>

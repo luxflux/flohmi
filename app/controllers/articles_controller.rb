@@ -4,6 +4,7 @@ class ArticlesController < ApplicationController
   # GET /articles
   def index
     @articles = policy_scope(Article).includes(:images_blobs, :contact_requests).order(id: :desc)
+    @articles = @articles.where(category_id: params[:category_id]) if params[:category_id]
     authorize @articles
   end
 
@@ -75,6 +76,6 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :description, :price_range)
+      params.require(:article).permit(:title, :description, :price_range, :category_id)
     end
 end

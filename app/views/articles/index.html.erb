@@ -17,6 +17,14 @@
 </section>
 <section class="section">
   <div class="container is-max-desktop">
+    <div class="tabs">
+      <ul>
+        <li class="<%= params[:category_id].blank? ? 'is-active' : '' %>"><%= link_to 'Alle', articles_path %></li>
+        <% Category.order(position: :asc).each do |category| %>
+          <li class="<%= params[:category_id].to_i == category.id ? 'is-active' : '' %>"><%= link_to category.name, articles_path(category_id: category.id) %></li>
+        <% end %>
+      </ul>
+    </div>
     <% @articles.in_groups_of(3, false) do |articles| %>
       <div class="columns">
         <% articles.each do |article| %>
