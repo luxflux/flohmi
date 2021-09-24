@@ -5,4 +5,8 @@ class Article < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   validates :price_range, numericality: true, allow_blank: true
+
+  def main_image
+    @main_image ||= images.first
+  end
 end

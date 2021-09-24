@@ -47,18 +47,20 @@
         <% articles.each do |article| %>
           <div class="column">
             <div class="card">
-              <div class="card-image">
-                <figure class="image is-350x350">
-                  <%= image_tag article.images.first.representation(resize_to_fill: [700, 700]) %>
-                </figure>
-                <div class="card-image-stamp">
-                  <% if article.contact_requests.present? %>
-                    <div class="tag is-medium is-info is-light">
-                      Hat Interessenten
-                    </div>
-                  <% end %>
+              <% if article.main_image %>
+                <div class="card-image">
+                  <figure class="image is-350x350">
+                    <%= image_tag article.main_image.representation(resize_to_fill: [700, 700]) %>
+                  </figure>
+                  <div class="card-image-stamp">
+                    <% if article.contact_requests.present? %>
+                      <div class="tag is-medium is-info is-light">
+                        Hat Interessenten
+                      </div>
+                    <% end %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
               <div class="card-content">
                 <p class="is-size-5">
                   <%= article.title %>
