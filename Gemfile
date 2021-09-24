@@ -62,3 +62,5 @@ gem "gibbon", "~> 3.4"
 gem "rack-cache", "~> 1.12"
 
 gem "dalli", "~> 2.7"
+
+gem "scout_apm", "~> 4.1"
