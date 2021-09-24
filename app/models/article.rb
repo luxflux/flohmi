@@ -7,6 +7,6 @@ class Article < ApplicationRecord
   validates :price_range, numericality: true, allow_blank: true
 
   def main_image
-    @main_image ||= images.first
+    @main_image ||= images.order(id: :asc).first
   end
 end
