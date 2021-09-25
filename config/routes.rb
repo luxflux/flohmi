@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :contact_requests, path: 'contact-requests', only: %i(new create)
   end
-  resources :contact_requests, path: 'contact-requests', only: %i(index show)
+  resources :contact_requests, path: 'contact-requests', only: %i(index show destroy)
   resources :subscribers, path: 'subscribers', only: %i(create)
 
   get 'login', to: 'sessions#new'

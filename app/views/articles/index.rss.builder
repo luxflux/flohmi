@@ -10,7 +10,7 @@ xml.rss version: "2.0", "xmlns:media" => 'http://search.yahoo.com/mrss/' do
         xml.title article.title
         xml.description article.description
 
-        image = article.images.first
+        image = article.main_image
         xml.media :content, url: polymorphic_url(image.representation(resize_to_fill: [350, 350])), type: image.content_type
         xml.pubDate article.created_at.to_s(:rfc822)
         xml.link article_url(article)

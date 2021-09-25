@@ -29,6 +29,17 @@ class ContactRequestsController < ApplicationController
     end
   end
 
+  def destroy
+    @contact_request = ContactRequest.find(params[:id])
+    authorize @contact_request
+    @contact_request.destroy
+
+    redirect_to contact_requests_url, notice: {
+      title: 'Anfrage gelöscht',
+      text: 'Die Anfrage wurde gelöscht',
+    }
+  end
+
   private
     def set_article
       @article = Article.find(params[:article_id])

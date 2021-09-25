@@ -3,6 +3,10 @@ class ContactRequestPolicy < ApplicationPolicy
     logged_in?
   end
 
+  def destroy?
+    logged_in?
+  end
+
   def create?
     true
   end

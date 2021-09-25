@@ -66,8 +66,8 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1
   def destroy
-    @article.destroy
     authorize @article
+    @article.destroy
 
     redirect_to articles_url, notice: {
       title: 'Artikel gelöscht',

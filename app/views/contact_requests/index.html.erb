@@ -9,6 +9,7 @@
           <th>Email</th>
           <th>Telefon</th>
           <th>Nachricht</th>
+          <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -33,6 +34,7 @@
               <button class="button is-text is-small modal-trigger">[Mehr]</button>
             <% end %>
             </td>
+            <td><%= button_to 'Löschen', contact_request_path(contact_request), method: :delete, class: 'button is-danger is-small' %></td>
           </tr>
         <% end %>
       </tbody>
