@@ -51,6 +51,9 @@
             <% if policy(@article).edit? %>
               <%= link_to 'Ändern', edit_article_path(@article), class: 'button is-link is-small' %>
             <% end %>
+            <% if policy(@article).mark_as_sold? %>
+              <%= link_to 'Verkauft!', sold_article_path(@article), class: 'button is-pimrary is-light is-small', method: :put %>
+            <% end %>
             <% if policy(@article).destroy? %>
               <%= link_to 'Löschen', article_path(@article), class: 'button is-danger is-light is-small', method: :delete, data: { confirm: 'Bist du sicher?' } %>
             <% end %>

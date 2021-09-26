@@ -4,7 +4,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    !record.sold? || logged_in?
   end
 
   def create?
@@ -16,6 +16,10 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def destroy?
+    logged_in?
+  end
+
+  def mark_as_sold?
     logged_in?
   end
 end

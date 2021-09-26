@@ -1,9 +1,9 @@
 class ArticlesController < ApplicationController
-  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_article, only: [:show, :edit, :update, :destroy, :mark_as_sold]
 
   # GET /articles
   def index
-    @articles = policy_scope(Article).includes(:images_blobs, :contact_requests).order(id: :desc)
+    @articles = policy_scope(Article).where(sold_at: nil).includes(:images_blobs, :contact_requests).order(id: :desc)
     @articles = @articles.where(category_id: params[:category_id]) if params[:category_id]
     authorize @articles
 
@@ -72,6 +72,16 @@ class ArticlesController < ApplicationController
     redirect_to articles_url, notice: {
       title: 'Artikel gelöscht',
       text: 'Der Artikel wurde gelöscht',
+    }
+  end
+
+  def mark_as_sold
+    authorize @article
+    @article.update! sold_at: Time.zone.now
+
+    redirect_to articles_url, notice: {
+      title: 'Artikel verkauft',
+      text: 'Der Artikel wurde als verkauft markiert',
     }
   end
 

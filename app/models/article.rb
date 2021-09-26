@@ -9,4 +9,8 @@ class Article < ApplicationRecord
   def main_image
     @main_image ||= images.order(id: :asc).first
   end
+
+  def sold?
+    sold_at.present?
+  end
 end
